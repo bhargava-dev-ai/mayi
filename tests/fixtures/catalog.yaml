@@ -1,0 +1,43 @@
+_meta:
+  version: "1"
+  owner: "bhargava"
+  reviewed_by: "yair.sabag"
+  reviewed_on: "2026-09-29"
+
+send_message:
+  recipient:
+    pen: application
+    source: "ticket.customer_email"
+  text:
+    pen: model
+    type: str
+    max_len: 2000
+
+recommend:
+  employee_id:
+    pen: application
+    source: "session.employee_id"
+  amount:
+    pen: human
+    limit: "amount <= 500"
+  rationale:
+    pen: model
+    type: str
+    max_len: 2000
+
+update_profile:
+  employee_id:
+    pen: application
+    source: "session.employee_id"
+  contact:
+    pen: model
+    type: object
+    fields:
+      email:
+        pen: model
+        type: str
+        max_len: 100
+      phone:
+        pen: model
+        type: str
+        max_len: 20

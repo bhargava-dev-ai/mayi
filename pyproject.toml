@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mayi"
+version = "0.0.0"
+description = "Argument-level authority for AI agent tool calls: a gateway that decides who controls each argument (application, model, human) and runs the tool only if the rules allow it"
+keywords = ["ai-agents", "llm", "security", "prompt-injection", "tool-calling", "authorization", "guardrails"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Topic :: Software Development :: Libraries",
+]
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+authors = [{ name = "Bhargava Pichikala" }]
+dependencies = ["pyyaml>=6.0"]
+
+[project.scripts]
+mayi = "mayi.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/bhargava-dev-ai/mayi"
+Repository = "https://github.com/bhargava-dev-ai/mayi"
+Issues = "https://github.com/bhargava-dev-ai/mayi/issues"
+
+[project.optional-dependencies]
+signing = ["cryptography>=42"]
+dev = ["cryptography>=42", "pytest>=8.0", "langgraph>=1.0", "langchain-core>=1.0", "hypothesis>=6.0"]
+langgraph = ["langgraph>=1.0", "langchain-core>=1.0"]
+anthropic = ["anthropic>=0.40"]
+
+[tool.setuptools.packages.find]
+include = ["mayi*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

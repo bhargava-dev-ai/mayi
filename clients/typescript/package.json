@@ -1,0 +1,19 @@
+{
+  "name": "mayi-client",
+  "version": "0.0.0",
+  "description": "TypeScript client for a mayi gateway: argument-level authority for AI agent tool calls.",
+  "license": "Apache-2.0",
+  "author": "Bhargava Pichikala",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && node --test test/client.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
