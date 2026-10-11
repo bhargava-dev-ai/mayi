@@ -1,4 +1,10 @@
-# mayi
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bhargava-dev-ai/mayi/main/assets/logo.png" width="120" alt="mayi logo">
+</p>
+
+<h1 align="center">mayi</h1>
+
+<p align="center"><b>The agent proposes. Your rules decide.</b></p>
 
 Argument-level authority for AI agent tool calls. The agent only *proposes* arguments. mayi decides who really controls each one, and runs the tool only if the rules allow it:
 
