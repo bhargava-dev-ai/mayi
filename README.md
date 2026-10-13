@@ -6,6 +6,8 @@
 
 <p align="center"><b>The agent proposes. Your rules decide.</b></p>
 
+<p align="center"><a href="https://bhargava-dev-ai.github.io/mayi/">Website and live demo</a> · <a href="https://pypi.org/project/mayi/">PyPI</a> · <a href="docs/GUIDE.md">Guide</a></p>
+
 <p align="center">
   <a href="https://github.com/bhargava-dev-ai/mayi/actions/workflows/tests.yml"><img alt="tests" src="https://github.com/bhargava-dev-ai/mayi/actions/workflows/tests.yml/badge.svg"></a>
   <a href="https://pypi.org/project/mayi/"><img alt="PyPI" src="https://img.shields.io/pypi/v/mayi"></a>
@@ -49,7 +51,7 @@ Edit `catalog.yaml` to say who controls each argument. Your app opens a session 
 |---|---|---|
 | AgentDojo banking, 9 injection tasks (replayed) | 9 / 9 succeed | 0 / 9 |
 | InjecAgent, 2,108 attack cases (replayed) | 2,108 / 2,108 | 0 / 2,108 |
-| Live Claude Haiku 4.5, 64 runs | 8 ran | 0 |
+| Live Claude Haiku 4.5, 64 runs | 8 of 64 ran | 0 of 64 |
 
 The replayed tests measure what happens after a fooled agent proposes the call, not how often models are fooled. The live test used two models and eight injections written by the author. Details, including where it did not help, are in the [guide](https://github.com/bhargava-dev-ai/mayi/blob/main/docs/GUIDE.md#live-test-with-real-models).
 
