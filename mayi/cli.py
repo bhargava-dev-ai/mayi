@@ -205,6 +205,7 @@ def cmd_serve(a) -> int:
     else:
         print(f"  agent key:  {agent}   (give to the agent runtime)")
         print(f"  app key:    {app}   (keep for your app and the console)")
+    print(f"  connect an agent:  export MAYI_BASE_URL={scheme}://{a.host}:{a.port}  MAYI_API_KEY=<agent key>")
     print(f"  state kept in {a.state_db} (survives restarts)")
     print("  alerts: " + ("on" if hook else "off (use --webhook URL or MAYI_WEBHOOK_URL)"))
     print("  signed approvals: " + ("public-key" if pub else "shared-secret" if secret else "off (set MAYI_APPROVER_PUBKEY or MAYI_SIGNING_SECRET)"))
