@@ -115,7 +115,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <div><b>4</b><span>owners per argument</span></div>
 <div><b>0 / 2,108</b><span>InjecAgent attacks run (replayed)</span></div>
 <div><b>9 / 9 → 0</b><span>AgentDojo banking tasks (replayed)</span></div>
-<div><b>214</b><span>tests passing</span></div>
+<div><b>215</b><span>tests passing</span></div>
 </div>
 </div>
 
@@ -220,10 +220,12 @@ mayi serve                 # prints an agent key and an app key</pre>
 <li>No outside security review yet. Do not use mayi alone to protect tools that move money.</li>
 <li>It checks free text the model writes but does not judge what it means.</li>
 <li>The copied-value check is a heuristic. Paraphrased, translated or spelled-out values get through.</li>
+<li>Budgets total per session by default. To total over a customer, your app passes a <span class="mono">budget_key</span> when it opens each session.</li>
 <li>It is not a new idea. Progent and CaMeL came first; the guide compares them.</li>
 </ul></div></section>
 </main>
 
+<section><div class="wrap"><h2>If mayi is useful</h2><p class="lead">A star on GitHub helps other people find it. If you try it with a host or framework that is not listed above, tell us what worked and what broke.</p><div class="row"><a class="pill dark" href="https://github.com/bhargava-dev-ai/mayi">Star on GitHub</a><a class="pill" href="https://github.com/bhargava-dev-ai/mayi/issues">Open an issue</a></div></div></section>
 <footer><div class="wrap">mayi is open source under Apache-2.0. Built by <a href="https://github.com/bhargava-dev-ai">Bhargava Pichikala</a>. <a href="https://github.com/bhargava-dev-ai/mayi/blob/main/docs/GUIDE.md">Guide</a> · <a href="https://github.com/bhargava-dev-ai/mayi/blob/main/ROADMAP.md">Roadmap</a> · <a href="https://github.com/bhargava-dev-ai/mayi/blob/main/SECURITY.md">Security</a></div></footer>
 
 <script>

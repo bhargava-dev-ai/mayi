@@ -155,3 +155,19 @@ def test_gateway_budget_is_per_session_and_survives_many_small_calls():
     out = [gw.call({"session_id": "a", "tool": "refund", "args": {"amount": 500}}, False)["outcome"] for _ in range(4)]
     assert out == ["executed", "executed", "escalated", "escalated"]
     assert gw.call({"session_id": "b", "tool": "refund", "args": {"amount": 500}}, False)["outcome"] == "executed"
+
+
+def test_gateway_budget_key_totals_across_sessions_for_one_customer():
+    from mayi import Catalog, ToolBoundary
+    cat = {"refund": {"ticket_id": {"pen": "application", "source": "ticket_id"},
+                      "amount": {"pen": "human", "limit": "amount <= 500", "session_budget": 1000}}}
+    gw = Gateway(ToolBoundary(Catalog.from_dict(cat), {"refund": lambda **k: "ok"}), AGENT, APP)
+    gw.create_session({"session_id": "a", "budget_key": "cust-7", "context": {"ticket_id": "T-1"}})
+    gw.create_session({"session_id": "b", "budget_key": "cust-7", "context": {"ticket_id": "T-2"}})
+    gw.create_session({"session_id": "c", "budget_key": "cust-8", "context": {"ticket_id": "T-3"}})
+    def go(sid):
+        return gw.call({"session_id": sid, "tool": "refund", "args": {"amount": 500}}, False)["outcome"]
+    assert [go("a"), go("b"), go("a")] == ["executed", "executed", "escalated"]  # one customer, two sessions, one total
+    assert go("c") == "executed"                                                  # another customer is unaffected
+    with pytest.raises(ValueError):
+        gw.create_session({"session_id": "d", "budget_key": "", "context": {}})

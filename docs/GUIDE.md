@@ -60,7 +60,7 @@ Once a session has used up its budget, further amounts need a human, exactly as 
 - Amounts a person approved also count toward the total, so approvals and standing limits cannot be stacked past it.
 - Only calls that actually ran are counted. Dry runs (`simulate`, `/v1/decide`) and failed tools use nothing up.
 - Negative amounts never get a standing approval, so they cannot be used to lower the total.
-- The total is kept per `budget_key` (the gateway uses the session id). With no session identity there is nothing to total over, so a person decides every time.
+- The total is kept per `budget_key`. By default the gateway uses the session id. To total over something larger, such as a customer, have your app pass `"budget_key": "cust-7"` when it opens each session (`POST /v1/sessions`, app key only; the agent cannot set it). All sessions with the same key share one total and one rate-limit window. With no session identity there is nothing to total over, so a person decides every time.
 - With `mayi serve` the total is kept in the state database and survives a restart (see below); `reset_budget(key)` clears a session.
 - `diff_catalogs` flags a raised or removed budget as a loosening.
 

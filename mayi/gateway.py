@@ -149,6 +149,11 @@ class Gateway:
         sid, ctx = body.get("session_id"), body.get("context")
         if not isinstance(sid, str) or not sid or not isinstance(ctx, dict):
             raise ValueError("need session_id (string) and context (object)")
+        bk = body.get("budget_key")
+        if bk is not None:
+            if not isinstance(bk, str) or not bk:
+                raise ValueError("budget_key must be a non-empty string")
+            ctx = {**ctx, "_budget_key": bk}  # set by the app (trusted); budgets and rate limits total over this key
         with self._lock:
             self._sessions[sid] = ctx
             self._approvals.setdefault(sid, self._new_set(sid))
@@ -280,7 +285,7 @@ class Gateway:
             self._expire_pending()
             res = self.boundary.call(
                 tool, args, self._sessions[sid], approvals=self._approvals[sid],
-                actor=body.get("actor") or "agent", dry_run=dry_run, budget_key=sid,
+                actor=body.get("actor") or "agent", dry_run=dry_run, budget_key=self._sessions[sid].get("_budget_key", sid),
                 untrusted=self._untrusted.get(sid),
             )
         if isinstance(res, Escalated) and not dry_run:

@@ -8,3 +8,5 @@ dist/
 *.db
 .env
 .hypothesis/
+.DS_Store
+docs/.DS_Store

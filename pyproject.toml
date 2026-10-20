@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mayi"
-version = "0.2.0"
+version = "0.2.1"
 description = "Argument-level authority for AI agent tool calls: a gateway that decides who controls each argument (application, model, human) and runs the tool only if the rules allow it"
 keywords = ["ai-agents", "llm", "security", "prompt-injection", "tool-calling", "authorization", "guardrails"]
 classifiers = [

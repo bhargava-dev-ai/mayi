@@ -43,7 +43,7 @@ Open the console at http://127.0.0.1:8787/console (key: `demo-app-key`). To watc
     mayi check catalog.yaml    # validate your rules
     mayi serve                 # prints an agent key and an app key
 
-Edit `catalog.yaml` to say who controls each argument. Your app opens a session with the values it controls; the agent calls `POST /v1/call`; held calls wait in the console for a person. More in the [guide](https://github.com/bhargava-dev-ai/mayi/blob/main/docs/GUIDE.md).
+Edit `catalog.yaml` to say who controls each argument. Your app opens a session with the values it controls; the agent calls `POST /v1/call`; held calls wait in the console for a person. Budgets total per session by default; pass `budget_key` (a customer id, say) when your app opens a session to total over a customer instead. More in the [guide](https://github.com/bhargava-dev-ai/mayi/blob/main/docs/GUIDE.md).
 
 ## Results
 
@@ -72,6 +72,10 @@ Tested: the official MCP Python client (SDK 1.30 and 2.2) through `mayi mcp-prox
 - It checks free text the model writes but does not judge what it means.
 - The copied-value check is a heuristic. Paraphrased, translated or spelled-out values get through.
 - It is not a new idea. Progent and CaMeL came first; the guide compares them.
+
+## If mayi is useful
+
+A star on GitHub helps other people find it. If you try it with a host or framework that is not listed above, please [open an issue](https://github.com/bhargava-dev-ai/mayi/issues) and say what worked and what broke.
 
 ## Run the tests
 
